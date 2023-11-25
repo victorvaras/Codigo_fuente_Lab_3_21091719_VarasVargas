@@ -1,6 +1,7 @@
 package org.example;
 
 import System_21091719_VarasVargas.System_21091719_VarasVargas;
+import User_21091719_VarasVargas.User_21091719_VarasVargas;
 
 import java.util.Scanner;
 
@@ -11,9 +12,22 @@ public class Main {
 
 
         System_21091719_VarasVargas system = new System_21091719_VarasVargas("Prueba chatbot", 0);
-        String alfa = system.toString();
-        System.out.println("Salida:  " + alfa  );
 
+        User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
+        TDA_usuarios.AddUser("user 1", "comun");
+        TDA_usuarios.AddUser("user 1", "comun");
+        TDA_usuarios.AddUser("user 2", "comun");
+        TDA_usuarios.AddUser("user 3", "administrador");
+        TDA_usuarios.Login("user 3");
+        TDA_usuarios.Login("user 1");
+        TDA_usuarios.Logout();
+
+
+
+
+
+        String salida = system.toString();
+        System.out.println(salida);
 
     }
 }
