@@ -74,12 +74,12 @@ public class User_21091719_VarasVargas {
 
     @Override
     public String toString() {
-        return "User_21091719_VarasVargas{" +
-                "usuario_logeado='" + usuario_logeado + "\n" +
-                ", tipo_usuario='" + tipo_usuario + "\n" +
-                ", Usuarios_Administradores=" + Usuarios_Administradores + "\n" +
-                ", Usuarios_Comunes=" + Usuarios_Comunes + "\n" +
-                '}';
+        return "User_21091719_VarasVargas{"+ "\n" +
+                "       usuario_logeado='" + usuario_logeado + "\n" +
+                "       tipo_usuario='" + tipo_usuario + "\n" +
+                "       Usuarios_Administradores=" + Usuarios_Administradores + "\n" +
+                "       Usuarios_Comunes=" + Usuarios_Comunes + "\n" +
+                "       }";
     }
 }
 

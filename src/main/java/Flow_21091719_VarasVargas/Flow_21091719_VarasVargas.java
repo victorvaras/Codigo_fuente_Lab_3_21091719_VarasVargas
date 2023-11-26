@@ -18,4 +18,17 @@ public class Flow_21091719_VarasVargas {
         this.Nombre_mensaje = nombre_mensaje;
         this.List_option= new ArrayList<>();
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    @Override
+    public String toString() {
+        return "Flow_21091719_VarasVargas{" +( "\n") +
+                "           ID=" + ID +( "\n") +
+                "           Nombre_mensaje='" + Nombre_mensaje +( "\n") +
+                "           List_option=" + List_option +( "\n") +
+                "       }";
+    }
 }

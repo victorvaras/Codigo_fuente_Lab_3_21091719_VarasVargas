@@ -10,7 +10,7 @@ public class System_21091719_VarasVargas {
     private String nombre_chatbot;
     private Integer inicial_chatbot;
 
-    private List <ChatBot_21091719_VarasVargas> List_ChatBot;
+    private List<ChatBot_21091719_VarasVargas> List_ChatBot;
 
     private User_21091719_VarasVargas TDA_Usuario;
 
@@ -26,15 +26,50 @@ public class System_21091719_VarasVargas {
         return TDA_Usuario;
     }
 
+    public List<ChatBot_21091719_VarasVargas> getList_ChatBot() {
+        return List_ChatBot;
+    }
+
+
+
+    public void AddChatBot (ChatBot_21091719_VarasVargas New_Chatbot){
+
+        boolean validador = true;
+        for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot) {
+
+            if ( elemento.getID() == New_Chatbot.getID()){
+                System.out.println("Chatbot con id duplicado en system");
+                validador = false;
+            }
+        }
+        if (validador == true){
+            this.List_ChatBot.add(New_Chatbot);
+        }
+    }
+
+
+    public ChatBot_21091719_VarasVargas getChatBot_ID(int ID){
+
+        for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot){
+            if (elemento.getID() == ID){
+                return elemento;
+            }
+        }
+        System.out.println("ChatBot no encontrado \n");
+        return null;
+    }
+
     @Override
     public String toString() {
-        return "System_21091719_VarasVargas{" +
-                "nombre_chatbot='" + nombre_chatbot + "\n" +
-                ", inicial_chatbot=" + inicial_chatbot + "\n" +
-                ", List_ChatBot=" + List_ChatBot + "\n" +
-                ", TDA_Usuario=" + TDA_Usuario + "\n" +
-                '}';
+        return "System_21091719_VarasVargas{" +"\n" +
+                "   nombre_chatbot='" + nombre_chatbot + "\n" +
+                "   inicial_chatbot=" + inicial_chatbot + "\n" +
+                "   List_ChatBot=" + List_ChatBot + "\n" +
+                "   TDA_Usuario=" + TDA_Usuario + "\n" +
+                "   }";
     }
+
+
 }
 
 
