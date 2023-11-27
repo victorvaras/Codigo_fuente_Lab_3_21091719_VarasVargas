@@ -2,6 +2,7 @@ package org.example;
 
 import ChatBot_21091719_VarasVargas.ChatBot_21091719_VarasVargas;
 import Flow_21091719_VarasVargas.Flow_21091719_VarasVargas;
+import Option_21091719_VarasVargas.Option_21091719_VarasVargas;
 import System_21091719_VarasVargas.System_21091719_VarasVargas;
 import User_21091719_VarasVargas.User_21091719_VarasVargas;
 
@@ -14,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System_21091719_VarasVargas system = new System_21091719_VarasVargas("Prueba chatbot", 0);
+        System_21091719_VarasVargas system = new System_21091719_VarasVargas("Prueba chatbot", 1);
 
         User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
         TDA_usuarios.AddUser("user 1", "comun");
@@ -41,8 +42,35 @@ public class Main {
         chatbot_Actual.AddFlow(flow_1);
         chatbot_Actual.AddFlow(flow_2);
 
-        String salida = system.toString();
-        System.out.println(salida);
+        Flow_21091719_VarasVargas flow_actual = chatbot_Actual.getFlow_ID(1);
+
+        Option_21091719_VarasVargas option_1 = new Option_21091719_VarasVargas(1, "Option 1", 1,1);
+        Option_21091719_VarasVargas option_2 = new Option_21091719_VarasVargas(2, "Option 2", 1,3);
+
+        option_1.setPalabras_claves("palabra1, palabra2, palabra3");
+        System.out.println("aqui validador:  " + option_1.validador_Palabra_Clave("palabra1"));
+
+        flow_actual.AddOption(option_1);
+        flow_actual.AddOption(option_2);
+        flow_actual.AddOption(option_1);
+
+
+        System.out.println("Inicial");
+        System.out.println("ChatBot actual: "+ system.getChatBot_actual() + "\nFlow actual: "+ system.getFlow_actual());
+
+        system.talk("hola");
+        System.out.println("\nDespues de hola");
+        System.out.println("ChatBot actual: "+ system.getChatBot_actual() + "\nFlow actual: "+ system.getFlow_actual());
+
+        system.talk("1");
+        System.out.println("\nDespues de 1");
+        System.out.println("ChatBot actual: "+ system.getChatBot_actual() + "\nFlow actual: "+ system.getFlow_actual());
+
+        system.talk("2");
+        System.out.println("\nDespues de 2");
+        System.out.println("ChatBot actual: "+ system.getChatBot_actual() + "\nFlow actual: "+ system.getFlow_actual());
+
+        //System.out.println(system.toString());
 
     }
 }

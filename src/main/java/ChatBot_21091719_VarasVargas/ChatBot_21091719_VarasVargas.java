@@ -26,6 +26,9 @@ public class ChatBot_21091719_VarasVargas {
         return ID;
     }
 
+    public int getStar_flow() {
+        return star_flow;
+    }
 
     public void AddFlow (Flow_21091719_VarasVargas new_Flow){
 
@@ -40,6 +43,17 @@ public class ChatBot_21091719_VarasVargas {
         if (validador == true){
             this.List_FLow.add(new_Flow);
         }
+    }
+
+    public Flow_21091719_VarasVargas getFlow_ID(int ID){
+
+        for (Flow_21091719_VarasVargas elemento : this.List_FLow){
+            if (elemento.getID() == ID){
+                return elemento;
+            }
+        }
+        System.out.println("Flow no encontrado \n");
+        return null;
     }
 
 
