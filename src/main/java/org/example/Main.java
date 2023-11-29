@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
 
+        /*
         System_21091719_VarasVargas system = new System_21091719_VarasVargas("Prueba chatbot", 1);
 
         User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
@@ -71,38 +72,176 @@ public class Main {
         System.out.println("ChatBot actual: "+ system.getChatBot_actual() + "\nFlow actual: "+ system.getFlow_actual());
 
         //System.out.println(system.toString());
+        */
+
+
+        boolean estado_system = true;
+        String  menu_seleccionado = "registro usuarios";
+
+        Scanner scanner = new Scanner(System.in);
+        int eleccion, eleccion_2;
+
+
+        System_21091719_VarasVargas system = new System_21091719_VarasVargas("Prueba chatot", 1);
+
+
+        while (estado_system == true){
+
+            switch (menu_seleccionado){
+
+                case "registro usuarios": {
+
+                    boolean estado_registro_usuario = true;
+
+                    do {
+                        System.out.println(
+                                "~~~ Sistema de chatbot - Inicio~~~\n" +
+                                        "Que accion desea realizar\n" +
+                                        "1. Login usuario\n" +
+                                        "2. Registrar usuario\n" +
+                                        "3. Salir de sistema de chatbot" +
+                                        "Ingrese su eleccion: "
+                        );
+                        eleccion = scanner.nextInt();
+
+                        switch (eleccion) {
+
+                            case 1: {
+                                scanner.nextLine();
+
+                                System.out.println("Ingrese nombre de usuario: ");
+                                String nombre = scanner.nextLine();
+
+                                User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
+                                TDA_usuarios.Login(nombre);
+
+                                if (TDA_usuarios.getTipo_usuario().equals("comun")) {
+
+                                    menu_seleccionado = "menu user comun";
+                                    estado_registro_usuario = false;
+                                }
+                                else if (TDA_usuarios.getTipo_usuario().equals("administrador")) {
+
+                                    menu_seleccionado = "menu user administrador";
+                                    estado_registro_usuario = false;
+
+                                } else {
+                                    System.out.println("Login fallido");
+                                }
+
+
+                                break;
+                            }
+
+                            case 2: {
+                                scanner.nextLine();
+
+                                System.out.println("Ingrese nombre de usuario: ");
+                                String nombre = scanner.nextLine();
+
+                                System.out.println("Ingrese tipo de usuario \n 1. Comun \n 2. Administrador\n Eleccion: ");
+                                String tipo_usuario = scanner.nextLine();
+
+                                if ("1".equals(tipo_usuario)) {
+                                    tipo_usuario = "comun";
+                                    User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
+                                    TDA_usuarios.AddUser(nombre, tipo_usuario);
+
+                                } else if ("2".equals(tipo_usuario)) {
+                                    tipo_usuario = "administrador";
+                                    User_21091719_VarasVargas TDA_usuarios = system.getTDA_Usuario();
+                                    TDA_usuarios.AddUser(nombre, tipo_usuario);
+
+                                } else {
+                                    System.out.println("Usuario no registrado, entrada tipo usuario equivocada");
+                                }
+
+                                break;
+
+                            }
+
+                            case 3: {
+                                System.out.println("Gracias por usar el sistema de chatbots");
+                                System.exit(0);
+                            }
+
+                            default: {
+                                System.out.println("Opcion invalida.");
+                            }
+
+                        }
+
+                    } while (estado_registro_usuario == true);
+                }
+
+
+                case "menu user administrador":{
+
+                    boolean estado_menu_administrador = true;
+
+                    do {
+                        System.out.println("~~~ Sistema de chatbot - Menu administrador ~~~" + "\n" +
+                                "Bienvenido usuario: " + system.getTDA_Usuario().getUsuario_logeado() + "usted es administrador \n" +
+                                "1. Crear chatbot" + "\n" +
+                                "2. Modificador chatbot" + "\n" +
+                                "3. Interactuar con sistema de chatbot" + "\n" +
+                                "4. Visualizar chatbot del sistema" + "\n" +
+                                "5. Visualizar todos los chatbots con sus flujos y opciones creadas" + "\n" +
+                                "6. Ejecutar simulacion de sistema de chatbot" + "\n" +
+                                "7. Salir"
+                        );
+
+                        eleccion_2 = scanner.nextInt();
+
+
+                        switch (eleccion_2) {
+
+                            case 1: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 2: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 3: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 4: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 5: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 6: {
+                                System.out.println("Funcion no implementada");
+                            }
+                            case 7: {
+                                System.out.println("Gracias por usar el sistema de chatbots");
+                                System.exit(0);
+                            }
+
+                        }
+
+                    }while (estado_menu_administrador == true) ;
+
+                }
+
+                case "menu user comun": {
+
+                    //menu de user comun
+                    System.out.println("menu user comun");
+                }
+
+
+
+            }
+
+
+
+        }
+
+        scanner.close();
 
     }
 }
 
-/*
-while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Opción 1");
-            System.out.println("2. Opción 2");
-            System.out.println("3. Opción 3");
-            System.out.println("0. Salir");
 
-            int opcion = scanner.nextInt();
-            switch (opcion) {
-                case 1:
-                    System.out.println("Has seleccionado la Opción 1");
-                    // Lógica de la Opción 1
-                    break;
-                case 2:
-                    System.out.println("Has seleccionado la Opción 2");
-                    // Lógica de la Opción 2
-                    break;
-                case 3:
-                    System.out.println("Has seleccionado la Opción 3");
-                    // Lógica de la Opción 3
-                    break;
-                case 0:
-                    System.out.println("Saliendo del programa. ¡Hasta luego!");
-                    System.exit(0);
-                default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
-            }
-        }
- */

@@ -18,6 +18,13 @@ public class User_21091719_VarasVargas {
         this.Usuarios_Comunes = new ArrayList<>();
     }
 
+    public String getUsuario_logeado() {
+        return usuario_logeado;
+    }
+
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
 
     public void AddUser(String nombre_usuario, String tipo_usuario){
 
