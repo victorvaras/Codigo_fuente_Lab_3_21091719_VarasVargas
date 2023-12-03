@@ -103,11 +103,12 @@ public class Main {
                                         "Ingrese su eleccion: "
                         );
                         eleccion = scanner.nextInt();
+                        scanner.nextLine();
 
                         switch (eleccion) {
 
                             case 1: {
-                                scanner.nextLine();
+
 
                                 System.out.println("Ingrese nombre de usuario: ");
                                 String nombre = scanner.nextLine();
@@ -134,7 +135,6 @@ public class Main {
                             }
 
                             case 2: {
-                                scanner.nextLine();
 
                                 System.out.println("Ingrese nombre de usuario: ");
                                 String nombre = scanner.nextLine();
@@ -192,12 +192,109 @@ public class Main {
                         );
 
                         eleccion_2 = scanner.nextInt();
-
+                        scanner.nextLine();
 
                         switch (eleccion_2) {
 
                             case 1: {
-                                System.out.println("Funcion no implementada");
+                                System.out.println("~~~ Creacion de nuevo ChatBot ~~~");
+
+                                System.out.println("Ingrese ID chatbot");
+                                int ID = scanner.nextInt();
+                                scanner.nextLine();
+
+                                System.out.println("Ingrese Nombre chatbot");
+                                String Nombre = scanner.nextLine();
+
+                                System.out.println("Ingrese mensaje de chatbot");
+                                String Mensaje = scanner.nextLine();
+
+                                System.out.println("Ingrese star flow");
+                                int Star_flow = scanner.nextInt();
+                                scanner.nextLine();
+
+                                ChatBot_21091719_VarasVargas new_ChatBot= new ChatBot_21091719_VarasVargas(ID,Nombre,Mensaje,Star_flow);
+                                system.AddChatBot(new_ChatBot);
+
+                                //Aqui prueba de system
+                                System.out.println(system.toString());
+
+                                System.out.println("¿Desea crear un nuevo flujo para este chatbot?\n" +
+                                        "1. Si\n 2. No");
+
+                                int accion_flujo = scanner.nextInt();
+                                scanner.nextLine();
+
+                                while (accion_flujo == 1){
+
+                                    System.out.println("Creacion nuevo flow para chatbot actual");
+
+                                    System.out.println("Ingrese ID");
+                                    ID = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    System.out.println("Ingrese nombre");
+                                    Nombre = scanner.nextLine();
+
+                                    Flow_21091719_VarasVargas new_flow= new Flow_21091719_VarasVargas(ID, Nombre);
+                                    new_ChatBot.AddFlow(new_flow);
+
+                                    //Aqui prueba de system
+                                    System.out.println(system.toString());
+
+                                    System.out.println("¿Desea crear un nuevo options para este flujo?\n" +
+                                            "1. Si \n2. No");
+
+                                    int accion_option = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    while (accion_option == 1){
+                                        System.out.println("Creacion nuevo option para chatbot actual");
+
+                                        System.out.println("Ingrese ID");
+                                        ID = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        System.out.println("Ingrese mensaje de option");
+                                        Mensaje = scanner.nextLine();
+
+                                        System.out.println("Ingrese inicial chatbot");
+                                        int Inicial_chatbot = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        System.out.println("Ingrese inicial flujo");
+                                        int Inicial_flujo = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        Option_21091719_VarasVargas new_option = new Option_21091719_VarasVargas(ID, Mensaje, Inicial_chatbot,Inicial_flujo);
+                                        new_flow.AddOption(new_option);
+
+                                        System.out.println("Desea agregar palabras claves a option\n 1. Si \n2.No");
+                                        int eleccion_palabras_claves = scanner.nextInt();
+                                        scanner.nextLine();
+
+                                        if (eleccion_palabras_claves == 1){
+                                            System.out.println("Ingrese las palabras claves separadas por comas (,), tantas como desee");
+
+                                            String palabras_claves = scanner.nextLine();
+                                            new_option.setPalabras_claves(palabras_claves);
+                                        }
+
+                                        //Aqui prueba de system
+                                        System.out.println(system.toString());
+
+                                        System.out.println("Desea agregar un nuevo option a flow actual\n 1. Si \n2.No");
+                                        accion_option = scanner.nextInt();
+                                        scanner.nextLine();
+                                    }
+
+                                    System.out.println("Desea agregar un nuevo flow a chatbot actual\n 1. Si \n2.No");
+                                    accion_flujo = scanner.nextInt();
+                                    scanner.nextLine();
+                                }
+
+                                break;
+
                             }
                             case 2: {
                                 System.out.println("Funcion no implementada");
