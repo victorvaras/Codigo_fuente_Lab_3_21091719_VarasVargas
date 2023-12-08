@@ -1,12 +1,12 @@
 package Option_21091719_VarasVargas;
 
+import Identificadores_21091719_VarasVargas.Identificadores_21091719_VarasVargas;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Option_21091719_VarasVargas {
-
-    private int ID;
+public class Option_21091719_VarasVargas extends Identificadores_21091719_VarasVargas {
 
     private String mensaje;
     private int inicial_chatbot;
@@ -14,7 +14,7 @@ public class Option_21091719_VarasVargas {
     private List<String> palabras_claves;
 
     public Option_21091719_VarasVargas(int ID, String mensaje, int inicial_chatbot, int inicial_flow) {
-        this.ID = ID;
+        super(ID,"");
         this.mensaje = mensaje;
         this.inicial_chatbot = inicial_chatbot;
         this.inicial_flow = inicial_flow;
@@ -22,9 +22,6 @@ public class Option_21091719_VarasVargas {
     }
 
 
-    public int getID() {
-        return ID;
-    }
 
     public int getInicial_chatbot() {
         return inicial_chatbot;
@@ -53,7 +50,7 @@ public class Option_21091719_VarasVargas {
     @Override
     public String toString() {
         return "Option_21091719_VarasVargas{" +( "\n") +
-                "               ID=" + ID +( "\n") +
+                "               ID=" + this.getID() +( "\n") +
                 "               mensaje='" + mensaje + ( "\n") +
                 "               inicial_charbot=" + inicial_chatbot +( "\n") +
                 "               inicial_flow=" + inicial_flow +( "\n") +
