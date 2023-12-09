@@ -51,10 +51,9 @@ public class Flow_21091719_VarasVargas extends Identificadores_21091719_VarasVar
 
     @Override
     public String toString() {
-        return "Flow_21091719_VarasVargas{" +( "\n") +
-                "           ID=" + this.getID() +( "\n") +
-                "           Nombre_mensaje='" + this.getNombre() +( "\n") +
-                "           List_option=" + List_option +( "\n") +
-                "       }";
+        return "\n" +
+                "           Flow " + this.getID()  +( "\n") +
+                "           Nombre y mensaje: " + this.getNombre() +( "\n") +
+                "           List_option=" + List_option +( "\n\n");
     }
 }

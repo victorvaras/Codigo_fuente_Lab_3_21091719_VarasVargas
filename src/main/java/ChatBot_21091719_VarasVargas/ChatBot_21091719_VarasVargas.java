@@ -25,7 +25,7 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
         return star_flow;
     }
 
-    public void AddFlow (Flow_21091719_VarasVargas new_Flow){
+    public boolean AddFlow (Flow_21091719_VarasVargas new_Flow){
 
         boolean validador = true;
         for (Flow_21091719_VarasVargas elemento : this.List_FLow) {
@@ -38,6 +38,7 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
         if (validador == true){
             this.List_FLow.add(new_Flow);
         }
+        return validador;
     }
 
     public Flow_21091719_VarasVargas getFlow_ID(int ID){
@@ -52,15 +53,26 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
     }
 
 
+    public String nombre_Flows(){
+        StringBuilder nombre_flows = new StringBuilder();
+
+        for ( Flow_21091719_VarasVargas flows : this.List_FLow){
+
+            nombre_flows.append( flows.getID()).append(". ");
+            nombre_flows.append( flows.getNombre()).append("\n");
+        }
+        return nombre_flows.toString();
+    }
+
+
     @Override
     public String toString() {
-        return "ChatBot_21091719_VarasVargas{" +( "\n") +
-                "       ID=" + this.getID() +
-                "       nombre='" + this.getNombre() + ( "\n") +
-                "       mensaje_bienvenida='" + mensaje_bienvenida + ( "\n") +
-                "       star_flow=" + star_flow +( "\n") +
-                "       List_FLow=" + List_FLow +( "\n") +
-                "       }";
+        return "        ChatBot " +this.getNombre() +( "\n") +
+                "       ID: " + this.getID() + "\n" +
+                "       Nombre: " + this.getNombre() + ( "\n") +
+                "       Mensaje bienvenida: " + mensaje_bienvenida + ( "\n") +
+                "       Star_flow: " + star_flow +( "\n") +
+                "       List_FLow= " + List_FLow +( "\n\n");
     }
 }
 

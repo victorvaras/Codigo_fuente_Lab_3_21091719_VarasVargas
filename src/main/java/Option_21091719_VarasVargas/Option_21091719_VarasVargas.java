@@ -49,12 +49,10 @@ public class Option_21091719_VarasVargas extends Identificadores_21091719_VarasV
 
     @Override
     public String toString() {
-        return "Option_21091719_VarasVargas{" +( "\n") +
-                "               ID=" + this.getID() +( "\n") +
-                "               mensaje='" + mensaje + ( "\n") +
-                "               inicial_charbot=" + inicial_chatbot +( "\n") +
-                "               inicial_flow=" + inicial_flow +( "\n") +
-                "               palabras_claves=" + palabras_claves +( "\n") +
-                '}';
+        return  "\n" + "               Option"+this.getID() +( "\n") +
+                "               Mensaje: " + mensaje + ( "\n") +
+                "               Inicial charbot: " + inicial_chatbot +( "\n") +
+                "               Inicial flow: " + inicial_flow +( "\n") +
+                "               Palabras claves= " + palabras_claves +( "\n");
     }
 }

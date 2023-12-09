@@ -44,7 +44,22 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         return Flow_actual;
     }
 
-    public void AddChatBot (ChatBot_21091719_VarasVargas New_Chatbot){
+    public boolean getTalk_Iniciado() {
+        return talk_Iniciado;
+    }
+
+    public ChatBot_21091719_VarasVargas getChatBot_ID(int ID){
+
+        for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot){
+            if (elemento.getID() == ID){
+                return elemento;
+            }
+        }
+        System.out.println("ChatBot no encontrado \n");
+        return null;
+    }
+
+    public boolean AddChatBot (ChatBot_21091719_VarasVargas New_Chatbot){
 
         boolean validador = true;
         for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot) {
@@ -57,18 +72,7 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         if (validador == true){
             this.List_ChatBot.add(New_Chatbot);
         }
-    }
-
-
-    public ChatBot_21091719_VarasVargas getChatBot_ID(int ID){
-
-        for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot){
-            if (elemento.getID() == ID){
-                return elemento;
-            }
-        }
-        System.out.println("ChatBot no encontrado \n");
-        return null;
+        return validador;
     }
 
 
@@ -111,15 +115,23 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
 
     }
 
+    public String nombre_Chatbots(){
+        StringBuilder nombre_chatbots = new StringBuilder();
+
+        for ( ChatBot_21091719_VarasVargas chatbots : this.List_ChatBot){
+
+            nombre_chatbots.append( chatbots.getID()).append(". ");
+            nombre_chatbots.append(chatbots.getNombre()).append("\n");
+        }
+        return nombre_chatbots.toString();
+    }
+
 
     @Override
     public String toString() {
-        return "System_21091719_VarasVargas{" +"\n" +
-                "   nombre_chatbot='" + this.getNombre() + "\n" +
-                "   inicial_chatbot=" + inicial_chatbot + "\n" +
-                "   List_ChatBot=" + List_ChatBot + "\n" +
-                "   TDA_Usuario=" + TDA_Usuario + "\n" +
-                "   }";
+        return "\n" + "System "+ this.getNombre() + "\n" +
+                "   inicial chatbot = " + inicial_chatbot + "\n" +
+                "   Chatbot en system: \n" + List_ChatBot + "\n" ;
     }
 
 
