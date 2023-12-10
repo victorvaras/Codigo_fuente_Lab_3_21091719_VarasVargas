@@ -18,12 +18,15 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
     private int ChatBot_actual;
     private int Flow_actual;
 
+    private StringBuilder chatHistory;
+
     public System_21091719_VarasVargas(String nombre_chatbot, Integer inicial_chatbot) {
         super(0,nombre_chatbot);
         this.inicial_chatbot   = inicial_chatbot;
         this.List_ChatBot      = new ArrayList<>();
         this.TDA_Usuario       = new User_21091719_VarasVargas();
         this.talk_Iniciado     = false;
+        this.chatHistory       = new StringBuilder();
     }
 
 
@@ -46,6 +49,10 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
 
     public boolean getTalk_Iniciado() {
         return talk_Iniciado;
+    }
+
+    public String getChatHistory() {
+        return chatHistory.toString();
     }
 
     public ChatBot_21091719_VarasVargas getChatBot_ID(int ID){
@@ -81,10 +88,9 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         if (false == this.talk_Iniciado){
 
             ChatBot_21091719_VarasVargas ChatBot_actual = this.getChatBot_ID(this.inicial_chatbot);
-            Flow_21091719_VarasVargas    Flow_actual    =ChatBot_actual.getFlow_ID(ChatBot_actual.getStar_flow());
 
-            this.ChatBot_actual = ChatBot_actual.getID();
-            this.Flow_actual    = Flow_actual.getID();
+            this.ChatBot_actual = this.inicial_chatbot;
+            this.Flow_actual    = ChatBot_actual.getStar_flow();
             this.talk_Iniciado = true;
         }
         else{
@@ -114,6 +120,19 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         }
 
     }
+
+
+    public void ModificarChathistory (String menu, String eleccion){
+
+        this.chatHistory.append("\n\n");
+        this.chatHistory.append(menu);
+        this.chatHistory.append("\n");
+        this.chatHistory.append("Eleccion de ");
+        this.chatHistory.append(this.TDA_Usuario.getUsuario_logeado());
+        this.chatHistory.append(" es: ");
+        this.chatHistory.append(eleccion);
+    }
+
 
     public String nombre_Chatbots(){
         StringBuilder nombre_chatbots = new StringBuilder();

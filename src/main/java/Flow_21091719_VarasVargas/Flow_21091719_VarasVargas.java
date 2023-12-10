@@ -49,6 +49,16 @@ public class Flow_21091719_VarasVargas extends Identificadores_21091719_VarasVar
         return null;
     }
 
+    public String mensaje_options(){
+        StringBuilder mensaje_options = new StringBuilder();
+
+        for ( Option_21091719_VarasVargas options : this.List_option){
+
+            mensaje_options.append( options.getMensaje()).append("\n");
+        }
+        return mensaje_options.toString();
+    }
+
     @Override
     public String toString() {
         return "\n" +

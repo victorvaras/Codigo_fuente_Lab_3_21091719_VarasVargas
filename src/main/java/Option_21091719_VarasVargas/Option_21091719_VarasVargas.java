@@ -31,6 +31,10 @@ public class Option_21091719_VarasVargas extends Identificadores_21091719_VarasV
         return inicial_flow;
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
     public List<String> getPalabras_claves() {
         return palabras_claves;
     }
