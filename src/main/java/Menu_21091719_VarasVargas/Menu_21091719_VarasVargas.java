@@ -7,10 +7,15 @@ import System_21091719_VarasVargas.System_21091719_VarasVargas;
 
 import java.util.Scanner;
 
+/**
+ * Clase la cual contiene el menu y sus redirecciones de cara al usuario
+ */
 public class Menu_21091719_VarasVargas {
 
-
-
+    /**
+     * <p> Funcion menu, la cual contiene todas las difurcaciones y funcionalidades dirigidas de este menu</p>
+     * @param system
+     */
     public void Menu(System_21091719_VarasVargas system){
         boolean estado_system = true;
         String  menu_seleccionado = "registro usuarios";
@@ -180,7 +185,7 @@ public class Menu_21091719_VarasVargas {
                             }
 
                             case "6": {
-                                System.out.println("Funcion no implementada");
+                                Acciones_menu.System_Simulate(system);
                                 break;
                             }
 
@@ -254,7 +259,7 @@ public class Menu_21091719_VarasVargas {
                             }
 
                             case "4": {
-                                System.out.println("Funcion no implementada");
+                                Acciones_menu.System_Simulate(system);
                                 break;
                             }
 
@@ -298,8 +303,6 @@ public class Menu_21091719_VarasVargas {
 
         scanner.close();
     }
-
-
 
 
 }

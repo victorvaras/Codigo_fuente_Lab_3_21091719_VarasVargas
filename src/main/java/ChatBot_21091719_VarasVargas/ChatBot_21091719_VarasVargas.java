@@ -6,13 +6,37 @@ import Identificadores_21091719_VarasVargas.Identificadores_21091719_VarasVargas
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_VarasVargas {
+/**
+ * Clase que representa a un ChatBot, el cual contiene diferentes atributos y metodos propios mencionados en su
+ * interface. Hereda los metodos a atributos de identificadores_21091719_VarasVargas
+ * @author Victor Varas
+ */
+public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_VarasVargas implements ChatBot_Interfece_21091719_VarasVargas{
 
+    /**
+     * Atributo privado String, que contiene mensaje de bienvenida
+     */
     private final String mensaje_bienvenida;
+
+    /**
+     * Atributo privado int, que contiene star flow
+     */
     private final int star_flow;
+
+    /**
+     * Atributo privado List, que contiene lista de flows
+     */
     private List<Flow_21091719_VarasVargas> List_FLow;
 
 
+    /**
+     * <p>Funcion que realiza la construccion de objeto ChatBot</p>
+     * @param ID
+     * @param nombre
+     * @param mensaje_bienvenida
+     * @param star_flow
+     * @return ChatBot_21091719_VarasVargas
+     */
     public ChatBot_21091719_VarasVargas(int ID, String nombre, String mensaje_bienvenida, int star_flow) {
         super(ID,nombre);
         this.mensaje_bienvenida = mensaje_bienvenida;
@@ -21,10 +45,21 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
     }
 
 
+    /**
+     * <p>Funcion getter, que retorna Star_flow</p>
+     * @return star_flow
+     */
     public int getStar_flow() {
         return star_flow;
     }
 
+    /**
+     *<p>
+     *     Funcion la cual agrega un nuevo flow al chatbot particular.
+     *</p>
+     * @param new_Flow
+     * @return boolean
+     */
     public boolean AddFlow (Flow_21091719_VarasVargas new_Flow){
 
         boolean validador = true;
@@ -41,6 +76,11 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
         return validador;
     }
 
+    /**
+     * <p>Funcion getter, que retorna un flow de acuerdo a su ID </p>
+     * @param ID
+     * @return star_flow
+     */
     public Flow_21091719_VarasVargas getFlow_ID(int ID){
 
         for (Flow_21091719_VarasVargas elemento : this.List_FLow){
@@ -52,7 +92,12 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
         return null;
     }
 
-
+    /**
+     *<p>
+     *     Funcion la cual retorna un string, que corresponde a los nombres de los flows que se encuentran almacenados
+     *</p>
+     * @return String
+     */
     public String nombre_Flows(){
         StringBuilder nombre_flows = new StringBuilder();
 
@@ -65,14 +110,5 @@ public class ChatBot_21091719_VarasVargas extends Identificadores_21091719_Varas
     }
 
 
-    @Override
-    public String toString() {
-        return "        ChatBot " +this.getNombre() +( "\n") +
-                "       ID: " + this.getID() + "\n" +
-                "       Nombre: " + this.getNombre() + ( "\n") +
-                "       Mensaje bienvenida: " + mensaje_bienvenida + ( "\n") +
-                "       Star_flow: " + star_flow +( "\n") +
-                "       List_FLow= " + List_FLow +( "\n\n");
-    }
 }
 

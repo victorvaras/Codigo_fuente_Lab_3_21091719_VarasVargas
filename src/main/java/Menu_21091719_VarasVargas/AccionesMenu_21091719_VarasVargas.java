@@ -8,9 +8,16 @@ import User_21091719_VarasVargas.User_21091719_VarasVargas;
 
 import java.util.Scanner;
 
+/**
+ * Clase la cual se encarga de realziar las diferentes acciones que realiza el menu principal, de cara al usuario
+ */
 public class AccionesMenu_21091719_VarasVargas {
 
 
+    /**
+     * <p> Funcion la cual realiza la carga de informacion al system, con diversos chatbot, flow y options</p>
+     * @param system
+     */
     public void  Cargar_system(System_21091719_VarasVargas system){
 
 
@@ -84,7 +91,12 @@ public class AccionesMenu_21091719_VarasVargas {
     }
 
 
-
+    /**
+     * <p>Funcion la cual se encarga de toda la parte interactiva del menu, que compone el login, addUser y logAut del
+     * system </p>
+     * @param system
+     * @return String
+     */
     public String Registro_usuarios(System_21091719_VarasVargas system){
         boolean estado_registro_usuario = true;
         Scanner scanner = new Scanner(System.in);
@@ -172,6 +184,10 @@ public class AccionesMenu_21091719_VarasVargas {
 
     }
 
+    /**
+     * <p> Funcion la cual realiza la creacion de un nuevo ChatBot de cara al usuario</p>
+     * @return ChatBot_21091719_VarasVargas
+     */
     public ChatBot_21091719_VarasVargas Menu_Crear_Chatbot(){
         Scanner scanner = new Scanner(System.in);
 
@@ -195,7 +211,10 @@ public class AccionesMenu_21091719_VarasVargas {
         return new_ChatBot;
     }
 
-
+    /**
+     * <p>Funcion la cual realiza la creacion de un nuevo flow de cara al usuario</p>
+     * @return Flow_21091719_VarasVargas
+     */
     public Flow_21091719_VarasVargas Menu_Crear_Flow(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nCreacion nuevo flow para chatbot actual");
@@ -211,7 +230,10 @@ public class AccionesMenu_21091719_VarasVargas {
         return new_flow;
     }
 
-
+    /**
+     * <p> Funcion la cual realiza la creacion de un option de cara al usuario</p>
+     * @return Option_21091719_VarasVargas
+     */
     public Option_21091719_VarasVargas Menu_Crear_Option() {
         Scanner scanner = new Scanner(System.in);
 
@@ -249,6 +271,10 @@ public class AccionesMenu_21091719_VarasVargas {
     }
 
 
+    /**
+     * <p> Funcion la cual realiza la interaccion del usuario con los chaatbot de cara al usuario</p>
+     * @param system
+     */
     public void Menu_talk(System_21091719_VarasVargas system){
 
         if (system.getTalk_Iniciado() == false){
@@ -282,6 +308,34 @@ public class AccionesMenu_21091719_VarasVargas {
 
 
         }
+
+    }
+
+
+    /**
+     * <p>metodo la cual realiza la simulacion del sistema de cara al usuario</p>
+     * @param system
+     */
+    public void System_Simulate(System_21091719_VarasVargas system){
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        if(system.getTalk_Iniciado() == false){
+            system.talk("");
+        }
+
+        System.out.println("Sistema de simulacion de chat");
+        System.out.println("Ingrese numero maximo de interacciones: ");
+        int max_interacciones = scanner.nextInt();
+
+        System.out.println("Ingrese numero de semilla: ");
+        int seed= scanner.nextInt();
+        system.Simulate_System(max_interacciones,seed);
+
+
+        System.out.println("Generacion exitosa, para visualizar simulacion, en menu principal seleccionar ChatHistory\n" +
+                "Saldra al costado del nombre que fue generado por simulate");
 
     }
 

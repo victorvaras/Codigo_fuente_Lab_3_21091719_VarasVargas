@@ -8,18 +8,50 @@ import User_21091719_VarasVargas.User_21091719_VarasVargas;
 
 import java.util.List;
 import java.util.ArrayList;
-public class System_21091719_VarasVargas extends Identificadores_21091719_VarasVargas {
+import java.util.Random;
 
-    private Integer inicial_chatbot;
+public class System_21091719_VarasVargas extends Identificadores_21091719_VarasVargas implements System_Interface_21091719_VarasVargas {
+
+    /**
+     * Atributo privado int, que almacena inicial chatbot
+     */
+    private int inicial_chatbot;
+
+    /**
+     * Atributo privado List, que contiene lista de chatbots
+     */
     private List<ChatBot_21091719_VarasVargas> List_ChatBot;
+
+    /**
+     * Atributo privado que almacena a clase User
+     */
     private User_21091719_VarasVargas TDA_Usuario;
 
+    /**
+     * Atributo privado boolean, almacena el estado del talk
+     */
     private boolean talk_Iniciado;
+
+    /**
+     * Atributo privado int, que almacena a chatbot actual
+     */
     private int ChatBot_actual;
+
+    /**
+     * Atributo privado int, que almacena a flow actual
+     */
     private int Flow_actual;
 
+    /**
+     * Atributo privado StringBuilder, que almacena el historial del talk
+     */
     private StringBuilder chatHistory;
 
+    /**
+     * <p> Funcion constructora que crea objeto System_21091719_VarasVargas</p>
+     * @param nombre_chatbot
+     * @param inicial_chatbot
+     */
     public System_21091719_VarasVargas(String nombre_chatbot, Integer inicial_chatbot) {
         super(0,nombre_chatbot);
         this.inicial_chatbot   = inicial_chatbot;
@@ -30,31 +62,60 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
     }
 
 
+    /**
+     * <p> Funcion getter, que retorna TDA_Usuario</p>
+     * @return TDA_Usuario
+     */
     public User_21091719_VarasVargas getTDA_Usuario() {
         return TDA_Usuario;
     }
 
+    /**
+     * <p> Funcion getter, que retorna TDA_Usuario</p>
+     * @return TDA_Usuario
+     */
     public List<ChatBot_21091719_VarasVargas> getList_ChatBot() {
         return List_ChatBot;
     }
 
 
+    /**
+     * <p> Funcion getter, que retorna TDA_Usuario</p>
+     * @return TDA_Usuario
+     */
     public int getChatBot_actual() {
         return ChatBot_actual;
     }
 
+    /**
+     * <p> Funcion getter, que retorna Flow_actual</p>
+     * @return Flow_actual
+     */
     public int getFlow_actual() {
         return Flow_actual;
     }
 
+    /**
+     * <p> Funcion getter, que retorna talk_Iniciado</p>
+     * @return talk_Iniciado
+     */
     public boolean getTalk_Iniciado() {
         return talk_Iniciado;
     }
 
+    /**
+     * <p> Funcion getter, que retorna chatHistory</p>
+     * @return chatHistory
+     */
     public String getChatHistory() {
         return chatHistory.toString();
     }
 
+    /**
+     * <p> Funcion la cual obtiene a un chatbot particular por su ID dentro de la lista de chatbots</p>
+     * @param ID
+     * @return ChatBot_21091719_VarasVargas
+     */
     public ChatBot_21091719_VarasVargas getChatBot_ID(int ID){
 
         for (ChatBot_21091719_VarasVargas elemento : this.List_ChatBot){
@@ -66,6 +127,11 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         return null;
     }
 
+    /**
+     * <p> Funcion la cual realiza la agregacion de un chatbot a lisa de chatbots</p>
+     * @param New_Chatbot
+     * @return AddChatBot
+     */
     public boolean AddChatBot (ChatBot_21091719_VarasVargas New_Chatbot){
 
         boolean validador = true;
@@ -82,7 +148,10 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
         return validador;
     }
 
-
+    /**
+     * <p>Funcion la cual realiza la interaccion del usuario por el sistema, actualizando los valoresw</p>
+     * @param eleccion
+     */
     public void talk(String eleccion){
 
         if (false == this.talk_Iniciado){
@@ -122,6 +191,11 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
     }
 
 
+    /**
+     * <p>Funcion la cual va modificando y agregando los elemetnos nesesarios que se realzien en funcion talk</p>
+     * @param menu
+     * @param eleccion
+     */
     public void ModificarChathistory (String menu, String eleccion){
 
         this.chatHistory.append("\n\n");
@@ -134,6 +208,41 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
     }
 
 
+    /**
+     * <p>Metodo el cual realiza la simulacion del system dado por un maximo de interacciones y una seed particular</p>
+     * @param max_interacciones
+     * @param seed
+     */
+    public void Simulate_System(int max_interacciones, int seed){
+
+
+        Random random = new Random(seed);
+        int num_minimo = 1;
+
+        for (int i = 1; i <= max_interacciones;i++){
+
+            ChatBot_21091719_VarasVargas chatbot_actual = this.getChatBot_ID(this.ChatBot_actual);
+            Flow_21091719_VarasVargas flow_actual = this.getChatBot_ID(this.getChatBot_actual()).getFlow_ID(this.Flow_actual);
+
+            int num_maximo = flow_actual.getList_option().size();
+            int numeroAleatorio = random.nextInt(num_maximo - num_minimo + 1) + num_minimo;
+
+            String eleccion = String.valueOf(numeroAleatorio);
+            this.talk(eleccion);
+
+            String mostrar = this.getFechaHoraActual() + " - " + this.getTDA_Usuario().getUsuario_logeado() + "  Generado por symulacion"+ "\n"+
+                    "Chatbot: " + chatbot_actual.getNombre() + "\n" + "Flujo: " + flow_actual.getNombre() + "\n" +
+                    flow_actual.mensaje_options();
+
+            this.ModificarChathistory(mostrar, eleccion);
+        }
+    }
+
+
+    /**
+     * <p> Funcion la cual entrega la totalidad de nombres de chatbots que se encuentran en lista de chatbots</p>
+     * @retur
+     */
     public String nombre_Chatbots(){
         StringBuilder nombre_chatbots = new StringBuilder();
 
@@ -146,12 +255,6 @@ public class System_21091719_VarasVargas extends Identificadores_21091719_VarasV
     }
 
 
-    @Override
-    public String toString() {
-        return "\n" + "System "+ this.getNombre() + "\n" +
-                "   inicial chatbot = " + inicial_chatbot + "\n" +
-                "   Chatbot en system: \n" + List_ChatBot + "\n" ;
-    }
 
 
 }
